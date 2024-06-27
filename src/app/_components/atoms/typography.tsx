@@ -18,7 +18,7 @@ export function Secondary({ children }: { children?: React.ReactNode; }) {
   return <p className="text-sm text-gray-400">{children}</p>;
 }
 
-export default function Typography({ type, children, ...props }: { type: string; children: React.ReactNode }) {
+export default function Typography({ type, children, ...props }: { type: string; children: React.ReactNode; }) {
   switch (type) {
     case "helper":
       return <Helper {...props}>{children}</Helper>;
