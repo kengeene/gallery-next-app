@@ -25,7 +25,7 @@ function PrimaryButton({
 }) {
   return (
     <button
-      className="w-full rounded-full bg-transparent px-4 py-3 text-center font-semibold text-white transition duration-300 hover:bg-gray-700"
+      className="w-full rounded-md bg-transparent px-4 py-3 text-center font-semibold text-white transition duration-300 hover:bg-gray-700"
       {...props}
     >
       {children}
@@ -43,7 +43,7 @@ function SecondaryButton({
 }) {
   return (
     <button
-      className="w-full rounded-full bg-secondary px-4 py-3 text-center font-semibold text-white"
+      className="w-full rounded-md bg-secondary px-4 py-3 text-center font-semibold text-white"
       {...props}
     >
       {children}
@@ -60,7 +60,7 @@ function AccentButton({
 }) {
   return (
     <button
-      className="w-full rounded-full bg-accent py-3 text-center font-semibold text-white transition duration-300 hover:bg-grey-600"
+      className="hover:bg-grey-600 w-full rounded-md bg-accent py-3 text-center font-semibold text-white transition duration-300"
       {...props}
     >
       {children}

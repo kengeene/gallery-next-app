@@ -2,9 +2,9 @@ import CustomButton from '@/app/_components/atoms/buttons'
 
 export default function SideBar(){
     return (
-      <div className="flex h-full w-64 flex-col justify-between p-4">
+      <div className="flex h-full w-64 flex-col justify-between rounded-r-lg bg-primary p-4">
         {/* <!-- Top section with navigation buttons --> */}
-        <div className="space-y-1">
+        <div className="flex flex-col h-1/2 justify-center">
           <CustomButton buttonType="secondary">Community</CustomButton>
           <CustomButton buttonType="primary">My Store</CustomButton>
         </div>

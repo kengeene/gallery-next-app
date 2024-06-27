@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
+      <body className="h-screen">
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>

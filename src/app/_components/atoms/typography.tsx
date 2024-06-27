@@ -10,6 +10,10 @@ function Primary({ children }: { children?: React.ReactNode }) {
   return <p className="text-base text-light">{children}</p>;
 }
 
+function Large({ children }: { children?: React.ReactNode }) {
+  return <p className="text-2xl font-bold">{children}</p>;
+}
+
 export function Secondary({ children }: { children?: React.ReactNode; }) {
   return <p className="text-sm text-gray-400">{children}</p>;
 }
@@ -27,6 +31,9 @@ export default function Typography({ type, children, ...props }: { type: string;
 
     case "secondary":
       return <Secondary {...props}>{children}</Secondary>;
+
+    case 'large':
+      return <Large {...props}>{children}</Large>;
 
     case "default":
       return <Primary {...props}>{children}</Primary>;

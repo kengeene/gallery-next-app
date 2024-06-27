@@ -15,6 +15,9 @@ export default {
         light: "#FFFFFF",
         background: "#212121",
       },
+      borderRadius: {
+        lg: "20px",
+      },
     },
   },
   plugins: [],
