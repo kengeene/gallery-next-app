@@ -4,6 +4,7 @@ import CustomButton from "@/app/_components/atoms/buttons";
 import Modal from '@/app/_components/organisims/modal'
 import Typography from "@/app/_components/atoms/typography";
 import { InputField, TextArea } from "@/app/_components/atoms/input";
+import { ComponentTitle } from "@/app/_components/molecules/component-title";
 
 const PageTemplate = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,13 +22,7 @@ const PageTemplate = () => {
       </CustomButton>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Modal Title">
         <div className="rounded-lg border bg-background p-6">
-          <div className="mb-1">
-            <Typography type="large">Add Picture</Typography>
-            <Typography type="secondary">
-              Share your moment with the community
-            </Typography>
-          </div>
-
+          <ComponentTitle title="Add Picture" subTitle="Share your moment with the community" />
           <div className="mb-6 flex flex-col items-center justify-center border-2 border-dashed border-gray-600 p-12">
             <svg
               className="mb-4 h-12 w-12 text-gray-400"
@@ -47,7 +42,6 @@ const PageTemplate = () => {
               Drag and drop your picture here
             </p>
           </div>
-
           <div className="mb-4">
             <InputField
               labelText="Title"
@@ -57,7 +51,6 @@ const PageTemplate = () => {
               onChange={setImageTitle}
             />
           </div>
-
           <div>
             <TextArea
               labelText="Description"

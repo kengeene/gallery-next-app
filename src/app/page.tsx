@@ -6,6 +6,8 @@ import type { User } from "@/app/constants/types";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/server/auth";
 import AddPicture from "@/app/_components/page/add-picture";
+import { ComponentTitle } from "@/app/_components/molecules/component-title";
+
 export default async function Home() {
   const session: {
     user: User;
@@ -18,15 +20,9 @@ export default async function Home() {
       <div className="content m-10 p-10">
         <div className="my-4 flex justify-between">
           {session ? (
-            <div>
-              <Typography type="large">My Store</Typography>
-              <Typography type="secondary">My recent uploads</Typography>
-            </div>
+              <ComponentTitle title="My Store" subTitle="My recent uploads" />
           ) : (
-            <div>
-              <Typography type="large">Gallery</Typography>
-              <Typography type="secondary">Community Gallery</Typography>
-            </div>
+              <ComponentTitle title="Gallery" subTitle="Community Gallery" />
           )}
           <div>
             <AddPicture/>
