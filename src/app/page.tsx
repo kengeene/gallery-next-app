@@ -1,7 +1,5 @@
 import SideBar from "./_components/organisims/side-bar";
-import CustomButton from '@/app/_components/atoms/buttons'
 import ImageDisplay from "@/app/_components/organisims/gallery-display";
-import Typography from "@/app/_components/atoms/typography";
 import type { User } from "@/app/constants/types";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/server/auth";

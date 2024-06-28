@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import CustomButton from "@/app/_components/atoms/buttons";
 import Modal from '@/app/_components/organisims/modal'
-import Typography from "@/app/_components/atoms/typography";
 import { InputField, TextArea } from "@/app/_components/atoms/input";
 import { ComponentTitle } from "@/app/_components/molecules/component-title";
 
