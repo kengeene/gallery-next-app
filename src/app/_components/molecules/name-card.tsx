@@ -6,9 +6,9 @@ export default function NameCard({ user }: { user: User }) {
       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-lg font-bold text-light">
         {user.name.charAt(0)}
       </div>
-      <div className="ml-3">
-        <p className="text-base text-light">{user.name}</p>
-        <p className="text-sm text-gray-400">Joined for 10h / +100 Likes</p>
+      <div className="ml-0.5">
+        <p className="text-lg font-semibold leading-5">{user.name}</p>
+        <p className="font-normal text-base leading-4">Joined for 10h / +100 Likes</p>
       </div>
     </div>
   );
