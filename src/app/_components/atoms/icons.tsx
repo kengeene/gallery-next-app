@@ -1,4 +1,6 @@
-export default function IconBackground({children}: {children: any}) {
+import React from "react";
+
+export default function IconBackground({children}: {children: React.ReactNode}) {
   return (
     <>
       <svg
