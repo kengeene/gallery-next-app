@@ -9,9 +9,9 @@ export default function Home() {
       <div className="sidebar flex w-1/4 flex-col">
         <SideBar />
       </div>
-      <div className="content m-10 w-3/4 p-10">
-        <div className="grid grid-flow-row-dense grid-cols-4">
-          <div className="col-span-3">
+      <div className="content m-10 p-10">
+        <div className="flex justify-between my-4">
+          <div>
             <Typography type="large">Gallery</Typography>
             <Typography type="secondary">Community Gallery</Typography>
           </div>
