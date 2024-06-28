@@ -29,7 +29,6 @@ export default async function Home() {
             </div>
           )}
           <div>
-            {/* <CustomButton buttonType="secondary"> Add Picture</CustomButton> */}
             <AddPicture/>
           </div>
         </div>

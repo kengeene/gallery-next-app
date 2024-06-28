@@ -1,9 +1,8 @@
-// components/molecules/ModalContent.js
 import React from "react";
 
-const ModalContent = ({ title, children, onClose }: { title: string; children: React.ReactNode; onClose: () => void }) => {
+const ModalContent = ({ children }: { children: React.ReactNode}) => {
   return (
-    <div className="transform overflow-hidden rounded-lg shadow-xl transition-all sm:w-full sm:max-w-lg">
+    <div className="w-1/2 transform overflow-hidden rounded-lg shadow-xl transition-all">
       {children}
     </div>
   );

@@ -18,6 +18,10 @@ export default {
       borderRadius: {
         lg: "20px",
       },
+      fontSize: {
+        xs: "14px",
+        sm: "16px",
+      },
     },
   },
   plugins: [],
