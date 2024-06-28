@@ -5,7 +5,7 @@ import Typography from "@/app/_components/atoms/typography";
 import type { User } from "@/app/constants/types";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/server/auth";
-
+import AddPicture from "@/app/_components/page/add-picture";
 export default async function Home() {
   const session: {
     user: User;
@@ -29,7 +29,8 @@ export default async function Home() {
             </div>
           )}
           <div>
-            <CustomButton buttonType="secondary"> Add Picture</CustomButton>
+            {/* <CustomButton buttonType="secondary"> Add Picture</CustomButton> */}
+            <AddPicture/>
           </div>
         </div>
         <div className="grid grid-cols-3 gap-3">
