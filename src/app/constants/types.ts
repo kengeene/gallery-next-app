@@ -6,12 +6,12 @@ export type User = {
 };
 
 type Author = {
-    email: string;
-    emailVerified: boolean;
-    id: string;
-    image: string;
-    name: string;
-  }
+  email?: string | null;
+  emailVerified?: Date | null;
+  id: string;
+  image?: string | null;
+  name?: string | null;
+};
 
 
 export type ImageData = {
@@ -22,10 +22,17 @@ export type ImageData = {
   createdAt: Date;
   id: string;
   imageUrl: string;
-  likes: [];
+  likes: like[];
   updatedAt: Date;
   likedByUser: boolean;
 };
+
+
+type like = {
+  postId: string;
+  id: string;
+  userId: string;
+}
 
 export type ButtonProps = {
   buttonType?: "primary" | "secondary" | "accent";

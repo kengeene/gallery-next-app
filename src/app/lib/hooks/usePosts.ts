@@ -2,11 +2,18 @@
 import { api } from "@/app/utils/api";
 
 const usePosts = () => {
- const { data: posts, isLoading } = api.post.getAll.useQuery();
+ const { data, isLoading }= api.post.getAll.useQuery();
   const create = api.post.create.useMutation();
   const like = api.post.like.useMutation();
   const unlike = api.post.unlike.useMutation();
-    return {posts, isLoading, create, like, unlike };
+
+   return {
+    posts: data || [], // Default to an empty array if posts is undefined
+    isLoading,
+    create,
+    like,
+    unlike
+  };
 }
 
 

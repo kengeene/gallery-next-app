@@ -9,7 +9,7 @@ import { useState } from "react";
 
 export default function ImageCard({
   image
-}: {image:ImageData;}) {
+}: {image: ImageData, onClick?: () => void}) {
   const {like, unlike}  = usePosts();
   const postId = image.id;
 
@@ -38,7 +38,7 @@ export default function ImageCard({
         <div className="absolute inset-0 flex flex-col justify-between p-4">
           <div className="flex items-center">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary py-2 text-sm font-bold text-light">
-              {image.author.name.charAt(0)}
+              {image.author.name?.charAt(0)}
             </div>
             <Typography type="helper"> By {image.author.name}</Typography>
           </div>
