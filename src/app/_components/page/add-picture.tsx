@@ -1,4 +1,5 @@
 "use client";
+// import type { ChangeEvent } from "react";
 import React, { useState } from "react";
 import CustomButton from "@/app/_components/atoms/buttons";
 import Modal from "@/app/_components/organisims/modal";
@@ -35,7 +36,7 @@ const PageTemplate = () => {
                 res.forEach((file) => {
                   createPost.mutate({
                   imageUrl: file.url,
-                  title: imageData.imageTitle,
+                  title: imageData.imageTitle ,
                   description: imageData.imageDescription,
                 });
                 });
@@ -52,7 +53,7 @@ const PageTemplate = () => {
               helperText="Enter the picture title"
               placeholder="Fancy Amazing Picture"
               value={imageData.imageTitle}
-              onChange={(title) => setImageData({ ...imageData, imageTitle: title })}
+              onChange={(title) => setImageData({ ...imageData, imageTitle: title as string })}
             />
           </div>
           <div>
@@ -61,7 +62,7 @@ const PageTemplate = () => {
               helperText="Describe your picture here"
               placeholder="Picture of an amazing view, Blue Sky, Polar Mountains..."
               value={imageData.imageDescription}
-              onChange={(description) => setImageData({ ...imageData, imageDescription: description })}
+              onChange={(description) => setImageData({ ...imageData, imageDescription: description as string })}
             />
           </div>
         </div>

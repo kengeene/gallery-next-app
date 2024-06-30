@@ -5,6 +5,10 @@ export type User = {
   id: string;
 };
 
+export type UserSession = {
+  user: User;
+} | null;
+
 type Author = {
   email?: string | null;
   emailVerified?: Date | null;

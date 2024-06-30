@@ -8,7 +8,7 @@ const usePosts = () => {
   const unlike = api.post.unlike.useMutation();
 
    return {
-    posts: data || [], // Default to an empty array if posts is undefined
+    posts: data ?? [], // Default to an empty array if posts is undefined
     isLoading,
     create,
     like,

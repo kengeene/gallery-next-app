@@ -9,7 +9,7 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const handleOutsideClick = useCallback(
     (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       id="modal-overlay"
       className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-75"
     >
-      <ModalContent title={title} onClose={onClose}>
+      <ModalContent>
         {children}
       </ModalContent>
     </div>
