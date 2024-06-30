@@ -25,7 +25,7 @@ export default function ImageCard({
 
           <div className="space-y-1">
             <div className="flex items-center justify-between truncate pr-2">
-              <Typography type="primary">{images.caption}</Typography>
+              <Typography type="primary">{images.description}</Typography>
               <svg
                 className="h-6 w-6 flex-shrink-0 border-primary text-white hover:fill-primary"
                 fill="none"

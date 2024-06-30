@@ -5,7 +5,7 @@ import Modal from "@/app/_components/organisims/modal";
 import { InputField, TextArea } from "@/app/_components/atoms/input";
 import { ComponentTitle } from "@/app/_components/molecules/component-title";
 import { UploadDropzone } from "@/app/utils/uploadthing";
-import { api } from "@/app/utils/api";
+import usePosts from "@/app/lib/hooks/usePosts";
 import useModal from "@/app/lib/hooks/useModal";
 const PageTemplate = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
@@ -13,9 +13,7 @@ const PageTemplate = () => {
     imageTitle: '',
     imageDescription: '',
   });
-
-  const createPost = api.post.create.useMutation();
-
+  const {create: createPost } = usePosts();
   return (
     <div>
       <CustomButton buttonType="secondary" onClick={openModal}>
@@ -35,7 +33,8 @@ const PageTemplate = () => {
                 res.forEach((file) => {
                   createPost.mutate({
                   imageUrl: file.url,
-                  caption: "test",
+                  title: imageData.imageTitle,
+                  description: imageData.imageDescription,
                 });
                 });
               }}

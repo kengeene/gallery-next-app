@@ -7,9 +7,14 @@ export default function GalleryDisplay() {
 
   return (
     <>
-      {isLoading ? 'Loading...' : (posts && posts.length > 0 ? posts.map((image, index) => (
-        <ImageCard key={index} images={image} />
-      )) : 'No posts available')}
+      {isLoading ? (
+        'Loading...'
+      ) : (
+        posts?.map((image) => (
+          <ImageCard key={image.id} images={image} />
+        ))
+      )}
     </>
   );
 }
+

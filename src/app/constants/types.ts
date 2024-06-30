@@ -15,7 +15,8 @@ export type ImageData = {
     name: string;
   };
   authorId: string;
-  caption: string;
+  title: string;
+  description: string;
   createdAt: Date;
   id: Date;
   imageUrl: string;
