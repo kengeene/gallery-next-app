@@ -10,7 +10,7 @@ export default async function SideBar(){
   } | null = await getServerSession(authOptions);
 
     return (
-      <div className="flex h-full w-64 flex-col justify-between rounded-r-lg bg-primary p-4">
+      <div className="flex h-full flex-col justify-between rounded-r-lg bg-primary p-4" w-min="297px">
         {/* <!-- Top section with navigation buttons --> */}
         <div className="flex h-1/2 flex-col justify-center">
           <CustomButton buttonType="secondary">Community</CustomButton>
