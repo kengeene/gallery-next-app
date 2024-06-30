@@ -1,21 +1,23 @@
 function Helper({children}: {children?: React.ReactNode}){
-    return <p className="text-sm text-light">{children}</p>
+    return <p className="text-sm text-light truncate">{children}</p>
 }
 
 function Label({ children }: {children?: React.ReactNode}) {
-  return <h3 className="text-lg font-semibold text-light">{children}</h3>;
+  return (
+    <h3 className="truncate text-lg font-semibold text-light">{children}</h3>
+  );
 }
 
 function Primary({ children }: { children?: React.ReactNode }) {
-  return <p className="text-base text-light">{children}</p>;
+  return <p className="truncate text-base text-light">{children}</p>;
 }
 
 function Large({ children }: { children?: React.ReactNode }) {
-  return <p className="text-2xl font-bold">{children}</p>;
+  return <p className="truncate text-2xl font-bold">{children}</p>;
 }
 
 export function Secondary({ children }: { children?: React.ReactNode; }) {
-  return <p className="text-sm text-gray-400">{children}</p>;
+  return <p className="truncate text-sm text-gray-400">{children}</p>;
 }
 
 export default function Typography({ type, children, ...props }: { type: string; children: React.ReactNode; }) {
