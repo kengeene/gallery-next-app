@@ -9,7 +9,11 @@ import usePosts from "@/app/lib/hooks/usePosts";
 import useModal from "@/app/lib/hooks/useModal";
 import { useRouter } from "next/navigation";
 
-const PageTemplate = () => {
+/**
+ * AddPost component is a button that opens a modal for adding a post.
+ * @returns {JSX.Element} The rendered component with the button and modal.
+ */
+const AddPost = () => {
   const { isModalOpen, closeModal, openModal } = useModal();
   const { create: createPost } = usePosts();
 
@@ -75,4 +79,4 @@ const PageTemplate = () => {
   );
 };
 
-export default PageTemplate;
+export default AddPost;
