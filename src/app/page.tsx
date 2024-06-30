@@ -12,11 +12,11 @@ export default async function Home() {
   } | null = await getServerSession(authOptions);
 
   return (
-    <main className="flex h-full bg-background text-light">
+    <main className="flex h-full w-full bg-background text-light">
       <div className="sidebar flex w-1/4 flex-col">
         <SideBar />
       </div>
-      <div className="content m-10 p-10">
+      <div className="content m-10 p-10 w-screen">
         <div className="my-4 flex justify-between">
           {session ? (
               <ComponentTitle title="My Store" subTitle="My recent uploads" />
@@ -27,9 +27,7 @@ export default async function Home() {
             <AddPicture/>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-3">
           <ImageDisplay/>
-        </div>
       </div>
     </main>
   );

@@ -14,7 +14,7 @@ export default function NameCard({ user }: { user: User }) {
       <div className="ml-0.5">
         <p className="text-lg font-semibold leading-5">{user.name}</p>
         {
-          isLoading ? <Loading/> : <p className="font-normal text-base leading-4">Joined {getTimeAgo(userData?.createdAt)} / +100 Likes</p>
+          isLoading ? <Loading variant="secondary"/> : <p className="font-normal text-base leading-4">Joined {getTimeAgo(userData?.createdAt)} / +100 Likes</p>
         }
       </div>
     </div>
