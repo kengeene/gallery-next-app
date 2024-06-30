@@ -10,7 +10,7 @@ export default function ImageCard({
       <Image
         src={images.imageUrl}
         alt="GPT bot reading"
-        className="rounded-lg"
+        className="rounded-lg h-full w-full"
         height={260}
         width={266}
       />

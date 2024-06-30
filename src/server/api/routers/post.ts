@@ -37,26 +37,27 @@ export const postRouter = createTRPCRouter({
         data,
       });
     }),
-
-  // like: protectedProcedure
-  //   .input(z.object({ postId: z.string() }))
-  //   .mutation(async ({ ctx, input }) => {
-  //     return ctx.db.like.create({
-  //       data: {
-  //         user: { connect: { id: ctx.session.user.id } },
-  //         post: { connect: { id: input.postId } },
-  //       },
-  //     });
-  //   }),
-
-  // unlike: protectedProcedure
-  //   .input(z.object({ postId: z.string() }))
-  //   .mutation(async ({ ctx, input }) => {
-  //     return ctx.db.like.deleteMany({
-  //       where: {
-  //         userId: ctx.session.user.id,
-  //         postId: input.postId,
-  //       },
-  //     });
-  //   }),
+    like: protectedProcedure
+    .input(z.object({ postId: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+       if (!ctx.db.like) {
+        throw new Error("Database connection for 'like' is not defined");
+      }
+      return ctx.db.like.create({
+        data: {
+          user: { connect: { id: ctx.session.user.id } },
+          post: { connect: { id: input.postId } },
+        },
+      });
+    }),
+    unlike: protectedProcedure
+    .input(z.object({ postId: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      return ctx.db.like.deleteMany({
+        where: {
+          userId: ctx.session.user.id,
+          postId: input.postId,
+        },
+      });
+    }),
 });
