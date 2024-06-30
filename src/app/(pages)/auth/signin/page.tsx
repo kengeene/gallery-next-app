@@ -2,16 +2,17 @@
 import { signIn } from "next-auth/react"
 import { useState } from 'react';
 import CustomButton from "@/app/_components/atoms/buttons";
-import { redirect } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 export default function Page() {
    const [loading, setLoading] = useState(false);
+   const router = useRouter();
 
   const handleSignIn = async () => {
     setLoading(true);
     try {
       await signIn('google');
-      redirect('/my-store')
+      router.push("/my-store");
     } finally {
       setLoading(false);
     }
