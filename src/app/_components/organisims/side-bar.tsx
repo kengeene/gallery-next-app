@@ -4,6 +4,7 @@ import type { User } from '@/app/constants/types';
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/server/auth";
 import Navigation from '@/app/_components/organisims/navigation';
+import Link from 'next/link';
 
 export default async function SideBar(){
   const session: {
@@ -20,7 +21,7 @@ export default async function SideBar(){
           {session ? (
             <NameCard user={session.user} />
           ) : (
-            <CustomButton buttonType="accent">Sign In</CustomButton>
+            <CustomButton buttonType="accent"><Link href="/auth/signin">Sign In</Link></CustomButton>
           )}
         </div>
       </div>

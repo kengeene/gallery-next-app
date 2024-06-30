@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import SideBar from "@/app/_components/organisims/side-bar";
+// import SideBar from "@/app/_components/organisims/side-bar";
 
 import { GeistSans } from "geist/font/sans";
 
@@ -20,14 +20,7 @@ export default async function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="h-screen">
         <TRPCReactProvider>
-        <main className="flex h-full w-full bg-background text-light">
-      <div className="sidebar flex w-1/4 flex-col">
-        <SideBar />
-      </div>
-      <div className="content m-10 p-10 w-screen">
-      {children}
-      </div>
-    </main>
+        {children}
     </TRPCReactProvider>
       </body>
     </html>
