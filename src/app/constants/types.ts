@@ -44,3 +44,11 @@ export type ButtonProps = {
   isLoading?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
+
+export interface InputFieldProps {
+  placeholder: string;
+  labelText: string;
+  helperText: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement> | string) => void;
+  value: string;
+}

@@ -1,16 +1,11 @@
+import type {InputFieldProps} from "@/app/constants/types";
 export const InputField = ({
   placeholder,
   onChange,
   value,
   labelText,
   helperText,
-}: {
-  placeholder: string;
-  labelText: string;
-  helperText: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement> | string) => void;
-  value: string;
-}) => {
+}: InputFieldProps) => {
   return (
     <>
       <label className="text-sm font-bold text-white">{labelText}</label>
