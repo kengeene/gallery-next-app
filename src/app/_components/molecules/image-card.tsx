@@ -26,11 +26,11 @@ export default function ImageCard({
   }
 
   return (
-    <div className="group relative overflow-hidden rounded-lg h-64 w-64">
+    <div className="group relative h-64 w-64 overflow-hidden rounded-lg">
       <Image
         src={image.imageUrl}
         alt="GPT bot reading"
-        className="rounded-lg h-full w-full"
+        className="h-full w-full rounded-lg"
         height={260}
         width={266}
       />
@@ -44,10 +44,17 @@ export default function ImageCard({
           </div>
 
           <div className="space-y-1">
-            <div className="flex items-center justify-between truncate pr-2">
-              <Typography type="primary">{image.description}</Typography>
+            <div className="flex items-center justify-between pr-2">
+              <Typography type="primary">
+                {image.description}
+              </Typography>
               <svg
-                className={"h-6 w-6 flex-shrink-0 border-primary cursor-pointer hover:cursor-pointer" + (isLiked ? " fill-secondary": "text-white hover:fill-secondary opacity-50")}
+                className={
+                  "h-6 w-6 flex-shrink-0 cursor-pointer border-primary hover:cursor-pointer" +
+                  (isLiked
+                    ? " fill-secondary"
+                    : "text-white opacity-50 hover:fill-secondary")
+                }
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
