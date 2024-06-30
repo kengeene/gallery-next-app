@@ -8,12 +8,12 @@ import usePosts from "@/app/lib/hooks/usePosts";
 import { useState } from "react";
 
 export default function ImageCard({
-  images
-}: {images:ImageData;}) {
+  image
+}: {image:ImageData;}) {
   const {like, unlike}  = usePosts();
-  const postId = images.id;
+  const postId = image.id;
 
-  const [isLiked, setIsLiked] = useState(images.likedByUser);
+  const [isLiked, setIsLiked] = useState(image.likedByUser);
 
   function handleClick() {
     if(isLiked){
@@ -28,7 +28,7 @@ export default function ImageCard({
   return (
     <div className="group relative overflow-hidden rounded-lg h-64 w-64">
       <Image
-        src={images.imageUrl}
+        src={image.imageUrl}
         alt="GPT bot reading"
         className="rounded-lg h-full w-full"
         height={260}
@@ -38,14 +38,14 @@ export default function ImageCard({
         <div className="absolute inset-0 flex flex-col justify-between p-4">
           <div className="flex items-center">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary py-2 text-sm font-bold text-light">
-              {images.author.name.charAt(0)}
+              {image.author.name.charAt(0)}
             </div>
-            <Typography type="helper"> By {images.author.name}</Typography>
+            <Typography type="helper"> By {image.author.name}</Typography>
           </div>
 
           <div className="space-y-1">
             <div className="flex items-center justify-between truncate pr-2">
-              <Typography type="primary">{images.description}</Typography>
+              <Typography type="primary">{image.description}</Typography>
               <svg
                 className={"h-6 w-6 flex-shrink-0 border-primary cursor-pointer hover:cursor-pointer" + (isLiked ? " fill-secondary": "text-white hover:fill-secondary opacity-50")}
                 fill="none"
@@ -63,7 +63,7 @@ export default function ImageCard({
               </svg>
             </div>
             <div className="line-clamp-1">
-              <Typography type="secondary">{images.description}</Typography>
+              <Typography type="secondary">{image.description}</Typography>
             </div>
           </div>
         </div>
