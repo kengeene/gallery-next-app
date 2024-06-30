@@ -12,7 +12,7 @@ export default async function SideBar(){
   } | null = await getServerSession(authOptions);
 
     return (
-      <div className="flex h-full flex-col justify-between rounded-r-lg bg-primary p-4" w-min="297px">
+      <div className="flex h-full flex-col justify-between rounded-r-lg bg-primary p-4 max-w-72">
         {/* <!-- Top section with navigation buttons --> */}
        <Navigation session={session}/>
 
