@@ -19,9 +19,9 @@ const AddPost = () => {
 
   const router = useRouter();
 
-  const [imageData, setImageData] = useState({
-    imageTitle: '',
-    imageDescription: '',
+  const [postData, setPostData] = useState({
+    postTitle: '',
+    postDescription: '',
   });
   return (
     <div>
@@ -31,7 +31,7 @@ const AddPost = () => {
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Modal Title">
         <div className="rounded-lg border bg-background p-6">
           <ComponentTitle
-            title="Add Picture"
+            title="Add Post"
             subTitle="Share your moment with the community"
           />
           <div className="mb-6 flex flex-col items-center justify-center border-2 border-dashed border-gray-600 p-12">
@@ -42,8 +42,8 @@ const AddPost = () => {
                 res.forEach((file) => {
                   createPost.mutate({
                   imageUrl: file.url,
-                  title: imageData.imageTitle ,
-                  description: imageData.imageDescription,
+                  title: postData.postTitle ,
+                  description: postData.postDescription,
                 });
                 });
                 closeModal();
@@ -60,8 +60,8 @@ const AddPost = () => {
               labelText="Title"
               helperText="Enter the picture title"
               placeholder="Fancy Amazing Picture"
-              value={imageData.imageTitle}
-              onChange={(title) => setImageData({ ...imageData, imageTitle: title as string })}
+              value={postData.postTitle}
+              onChange={(title) => setPostData({ ...postData, postTitle: title as string })}
             />
           </div>
           <div>
@@ -69,8 +69,8 @@ const AddPost = () => {
               labelText="Description"
               helperText="Describe your picture here"
               placeholder="Picture of an amazing view, Blue Sky, Polar Mountains..."
-              value={imageData.imageDescription}
-              onChange={(description) => setImageData({ ...imageData, imageDescription: description as string })}
+              value={postData.postDescription}
+              onChange={(description) => setPostData({ ...postData, postDescription: description as string })}
             />
           </div>
         </div>
