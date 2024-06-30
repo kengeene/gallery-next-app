@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 'use client'
 import Image from "next/image";
 import Typography from "@/app/_components/atoms/typography";
@@ -9,16 +11,17 @@ export default function ImageCard({
   images
 }: {images:ImageData;}) {
   const {like, unlike}  = usePosts();
+  const postId = images.id;
 
   const [isLiked, setIsLiked] = useState(images.likedByUser);
 
   function handleClick() {
     if(isLiked){
       setIsLiked(false);
-      unlike.mutate({postId: images.id as string})
+      unlike.mutate({ postId });
     }else{
       setIsLiked(true);
-      like.mutate({postId: images.id as string})
+      like.mutate({ postId });
     }
   }
 
