@@ -20,7 +20,7 @@ export type ImageData = {
   title: string;
   description: string;
   createdAt: Date;
-  id: Date;
+  id: string;
   imageUrl: string;
   likes: [];
   updatedAt: Date;
