@@ -6,7 +6,7 @@ export default async function Home() {
   return (
       <div>
         <div className="my-4 flex justify-between">
-          <ComponentTitle title="Gallery" subTitle="Community Gallery" />
+        <ComponentTitle title="My Store" subTitle="My recent uploads" />
           <div>
             <AddPicture/>
           </div>

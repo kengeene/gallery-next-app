@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import SideBar from "@/app/_components/organisims/side-bar";
 
 import { GeistSans } from "geist/font/sans";
 
@@ -10,7 +11,7 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -18,7 +19,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="h-screen">
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+        <main className="flex h-full w-full bg-background text-light">
+      <div className="sidebar flex w-1/4 flex-col">
+        <SideBar />
+      </div>
+      <div className="content m-10 p-10 w-screen">
+      {children}
+      </div>
+    </main>
+    </TRPCReactProvider>
       </body>
     </html>
   );

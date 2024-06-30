@@ -3,6 +3,7 @@ import NameCard from "@/app/_components/molecules/name-card";
 import type { User } from '@/app/constants/types';
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/server/auth";
+import Navigation from '@/app/_components/organisims/navigation';
 
 export default async function SideBar(){
   const session: {
@@ -12,10 +13,7 @@ export default async function SideBar(){
     return (
       <div className="flex h-full flex-col justify-between rounded-r-lg bg-primary p-4" w-min="297px">
         {/* <!-- Top section with navigation buttons --> */}
-        <div className="flex h-1/2 flex-col justify-center">
-          <CustomButton buttonType="secondary">Community</CustomButton>
-          <CustomButton buttonType="primary">My Store</CustomButton>
-        </div>
+       <Navigation/>
 
         {/* <!-- Bottom section with Sign In button --> */}
         <div className="my-5 py-5">
