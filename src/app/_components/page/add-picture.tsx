@@ -1,5 +1,4 @@
 "use client";
-// import type { ChangeEvent } from "react";
 import React, { useState } from "react";
 import CustomButton from "@/app/_components/atoms/buttons";
 import Modal from "@/app/_components/organisims/modal";
@@ -8,15 +7,18 @@ import { ComponentTitle } from "@/app/_components/molecules/component-title";
 import { UploadDropzone } from "@/app/utils/uploadthing";
 import usePosts from "@/app/lib/hooks/usePosts";
 import useModal from "@/app/lib/hooks/useModal";
+import { useRouter } from "next/navigation";
 
 const PageTemplate = () => {
   const { isModalOpen, closeModal, openModal } = useModal();
+  const { create: createPost } = usePosts();
+
+  const router = useRouter();
 
   const [imageData, setImageData] = useState({
     imageTitle: '',
     imageDescription: '',
   });
-  const {create: createPost } = usePosts();
   return (
     <div>
       <CustomButton buttonType="secondary" onClick={openModal}>
@@ -40,6 +42,8 @@ const PageTemplate = () => {
                   description: imageData.imageDescription,
                 });
                 });
+                closeModal();
+                router.push("/");
               }}
               onUploadError={(error: Error) => {
                 // Do something with the error.
