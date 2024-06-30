@@ -5,15 +5,17 @@ export type User = {
   id: string;
 };
 
-
-export type ImageData = {
-  author: {
+type Author = {
     email: string;
     emailVerified: boolean;
     id: string;
     image: string;
     name: string;
-  };
+  }
+
+
+export type ImageData = {
+  author: Author;
   authorId: string;
   title: string;
   description: string;
@@ -23,4 +25,11 @@ export type ImageData = {
   likes: [];
   updatedAt: Date;
   likedByUser: boolean;
+};
+
+export type ButtonProps = {
+  buttonType?: "primary" | "secondary" | "accent";
+  children: React.ReactNode;
+  isLoading?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };

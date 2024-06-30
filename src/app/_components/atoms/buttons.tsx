@@ -1,12 +1,6 @@
 import React from "react";
 import Loading from "./loading";
-
-type ButtonProps = {
-  buttonType?: "primary" | "secondary" | "accent";
-  children: React.ReactNode;
-  isLoading?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-};
+import type { ButtonProps } from "@/app/constants/types";
 
 const Button: React.FC<ButtonProps> = ({
   buttonType = "primary",

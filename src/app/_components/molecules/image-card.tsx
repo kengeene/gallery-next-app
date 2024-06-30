@@ -16,11 +16,9 @@ export default function ImageCard({
     if(isLiked){
       setIsLiked(false);
       unlike.mutate({postId: images.id as string})
-      console.log(isLiked);
     }else{
       setIsLiked(true);
       like.mutate({postId: images.id as string})
-      console.log(isLiked);
     }
   }
 
