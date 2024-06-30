@@ -10,6 +10,7 @@ export default async function Home() {
   const session: {
     user: User;
   } | null = await getServerSession(authOptions);
+
   return (
     <main className="flex h-full bg-background text-light">
       <div className="sidebar flex w-1/4 flex-col">
@@ -27,7 +28,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="grid grid-cols-3 gap-3">
-          <ImageDisplay />
+          <ImageDisplay/>
         </div>
       </div>
     </main>

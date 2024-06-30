@@ -1,16 +1,15 @@
 "use client";
-
-import UseUserData from "@/app/lib/hooks/UseUserData";
 import ImageCard from '@/app/_components/molecules/image-card'
+import usePosts from '@/app/lib/hooks/usePosts';
 
 export default function GalleryDisplay() {
-  const { userData } = UseUserData();
+   const {posts, isLoading} = usePosts();
 
   return (
     <>
-      {userData.map((data, index) => (
-        <ImageCard key={index} data={data} />
-      ))}
+      {isLoading ? 'Loading...' : (posts && posts.length > 0 ? posts.map((image, index) => (
+        <ImageCard key={index} images={image} />
+      )) : 'No posts available')}
     </>
   );
 }
