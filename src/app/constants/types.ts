@@ -22,4 +22,5 @@ export type ImageData = {
   imageUrl: string;
   likes: [];
   updatedAt: Date;
+  likedByUser: boolean;
 };

@@ -27,7 +27,7 @@ export default async function Home() {
             <AddPicture/>
           </div>
         </div>
-          <ImageDisplay/>
+          <ImageDisplay />
       </div>
     </main>
   );

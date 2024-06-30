@@ -12,7 +12,13 @@ export const postRouter = createTRPCRouter({
       include: { author: true, likes: true },
       orderBy: { createdAt: "desc" },
     });
-    return posts;
+
+    return posts.map((post) => {
+      return {
+        ...post,
+        likedByUser: post.likes.some((like) => like.userId === ctx?.session?.user.id),
+      };
+    });
   } catch (error) {
     throw error;
   }

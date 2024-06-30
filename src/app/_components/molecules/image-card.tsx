@@ -1,10 +1,29 @@
+'use client'
 import Image from "next/image";
 import Typography from "@/app/_components/atoms/typography";
 import type { ImageData } from "@/app/constants/types";
+import usePosts from "@/app/lib/hooks/usePosts";
+import { useState } from "react";
 
 export default function ImageCard({
-  images,
-}: {images:ImageData}) {
+  images
+}: {images:ImageData;}) {
+  const {like, unlike}  = usePosts();
+
+  const [isLiked, setIsLiked] = useState(images.likedByUser);
+
+  function handleClick() {
+    if(isLiked){
+      setIsLiked(false);
+      unlike.mutate({postId: images.id as string})
+      console.log(isLiked);
+    }else{
+      setIsLiked(true);
+      like.mutate({postId: images.id as string})
+      console.log(isLiked);
+    }
+  }
+
   return (
     <div className="group relative overflow-hidden rounded-lg h-64 w-64">
       <Image
@@ -27,11 +46,12 @@ export default function ImageCard({
             <div className="flex items-center justify-between truncate pr-2">
               <Typography type="primary">{images.description}</Typography>
               <svg
-                className="h-6 w-6 flex-shrink-0 border-primary text-white hover:fill-primary"
+                className={"h-6 w-6 flex-shrink-0 border-primary cursor-pointer hover:cursor-pointer" + (isLiked ? " fill-secondary": "text-white hover:fill-secondary opacity-50")}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
+                onClick={() => handleClick()}
               >
                 <path
                   strokeLinecap="round"
@@ -42,7 +62,7 @@ export default function ImageCard({
               </svg>
             </div>
             <div className="line-clamp-1">
-              <Typography type="secondary">{images.caption}</Typography>
+              <Typography type="secondary">{images.description}</Typography>
             </div>
           </div>
         </div>
