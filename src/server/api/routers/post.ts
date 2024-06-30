@@ -1,5 +1,4 @@
 import { z } from "zod";
-
 import {
   createTRPCRouter,
   protectedProcedure,
@@ -7,36 +6,55 @@ import {
 } from "@/server/api/trpc";
 
 export const postRouter = createTRPCRouter({
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
-    }),
+ getAll: publicProcedure.query(async ({ ctx }) => {
+  try {
+    const posts = await ctx.db.post.findMany({
+      include: { author: true, likes: true },
+      orderBy: { createdAt: "desc" },
+    });
+    return posts;
+  } catch (error) {
+    throw error;
+  }
+}),
 
   create: protectedProcedure
-    .input(z.object({ name: z.string().min(1) }))
+    .input(
+      z.object({
+        imageUrl: z.string().url(),
+        caption: z.string().optional(),
+      }),
+    )
     .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
+      const data = {
+        imageUrl: input.imageUrl,
+        caption: input.caption,
+        author: { connect: { id: ctx.session.user.id } },
+      };
       return ctx.db.post.create({
-        data: {
-          name: input.name,
-          createdBy: { connect: { id: ctx.session.user.id } },
-        },
+        data,
       });
     }),
 
-  getLatest: protectedProcedure.query(({ ctx }) => {
-    return ctx.db.post.findFirst({
-      orderBy: { createdAt: "desc" },
-      where: { createdBy: { id: ctx.session.user.id } },
-    });
-  }),
+  // like: protectedProcedure
+  //   .input(z.object({ postId: z.string() }))
+  //   .mutation(async ({ ctx, input }) => {
+  //     return ctx.db.like.create({
+  //       data: {
+  //         user: { connect: { id: ctx.session.user.id } },
+  //         post: { connect: { id: input.postId } },
+  //       },
+  //     });
+  //   }),
 
-  getSecretMessage: protectedProcedure.query(() => {
-    return "you can now see this secret message!";
-  }),
+  // unlike: protectedProcedure
+  //   .input(z.object({ postId: z.string() }))
+  //   .mutation(async ({ ctx, input }) => {
+  //     return ctx.db.like.deleteMany({
+  //       where: {
+  //         userId: ctx.session.user.id,
+  //         postId: input.postId,
+  //       },
+  //     });
+  //   }),
 });
