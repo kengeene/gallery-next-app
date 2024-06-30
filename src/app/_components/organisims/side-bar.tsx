@@ -14,7 +14,7 @@ export default async function SideBar(){
     return (
       <div className="flex h-full flex-col justify-between rounded-r-lg bg-primary p-4" w-min="297px">
         {/* <!-- Top section with navigation buttons --> */}
-       <Navigation/>
+       <Navigation session={session}/>
 
         {/* <!-- Bottom section with Sign In button --> */}
         <div className="my-5 py-5">

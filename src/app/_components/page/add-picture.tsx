@@ -6,9 +6,16 @@ import { InputField, TextArea } from "@/app/_components/atoms/input";
 import { ComponentTitle } from "@/app/_components/molecules/component-title";
 import { UploadDropzone } from "@/app/utils/uploadthing";
 import usePosts from "@/app/lib/hooks/usePosts";
-import useModal from "@/app/lib/hooks/useModal";
+// import useModal from "@/app/lib/hooks/useModal";
 const PageTemplate = () => {
-  const { isModalOpen, openModal, closeModal } = useModal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    console.log("modal is open", isModalOpen);
+  };
+  const closeModal = () => setIsModalOpen(false);
+
   const [imageData, setImageData] = useState({
     imageTitle: '',
     imageDescription: '',
