@@ -2,6 +2,8 @@
 import { signIn } from "next-auth/react"
 import { useState } from 'react';
 import CustomButton from "@/app/_components/atoms/buttons";
+import { redirect } from 'next/navigation'
+
 export default function Page() {
    const [loading, setLoading] = useState(false);
 
@@ -9,6 +11,7 @@ export default function Page() {
     setLoading(true);
     try {
       await signIn('google');
+      redirect('/my-store')
     } finally {
       setLoading(false);
     }
