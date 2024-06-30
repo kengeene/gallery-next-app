@@ -1,5 +1,5 @@
 import ImageDisplay from "@/app/_components/organisims/gallery-display";
-import AddPicture from "@/app/_components/page/add-picture";
+import AddPicture from "@/app/_components/page/add-post";
 import { ComponentTitle } from "@/app/_components/molecules/component-title";
 
 export default async function page() {
