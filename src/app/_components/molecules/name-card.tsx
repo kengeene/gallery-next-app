@@ -8,7 +8,7 @@ export default function NameCard({ user }: { user: User }) {
   const { user: userData, isLoading } =useUser();
   return (
     <div className="mb-4 flex items-center">
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-lg font-bold text-light">
+      <div className="flex h-10 w-10 m-2 items-center justify-center rounded-full bg-secondary text-lg font-bold text-light">
         {user.name.charAt(0)}
       </div>
       <div className="ml-0.5">
