@@ -6,23 +6,45 @@ import {
 } from "@/server/api/trpc";
 
 export const postRouter = createTRPCRouter({
- getAll: publicProcedure.query(async ({ ctx }) => {
-  try {
-    const posts = await ctx.db.post.findMany({
-      include: { author: true, likes: true },
-      orderBy: { createdAt: "desc" },
-    });
+  getAll: publicProcedure.query(async ({ ctx }) => {
+    try {
+      const posts = await ctx.db.post.findMany({
+        include: { author: true, likes: true },
+        orderBy: { createdAt: "desc" },
+      });
 
-    return posts.map((post) => {
-      return {
-        ...post,
-        likedByUser: post.likes.some((like) => like.userId === ctx?.session?.user.id),
-      };
-    });
-  } catch (error) {
-    throw error;
-  }
-}),
+      return posts.map((post) => {
+        return {
+          ...post,
+          likedByUser: post.likes.some(
+            (like) => like.userId === ctx?.session?.user.id,
+          ),
+        };
+      });
+    } catch (error) {
+      throw error;
+    }
+  }),
+  get: publicProcedure.query(async ({ ctx }) => {
+    try {
+      const posts = await ctx.db.post.findMany({
+        where: { authorId: ctx?.session?.user.id },
+        include: { author: true, likes: true },
+        orderBy: { createdAt: "desc" },
+      });
+
+      return posts.map((post) => {
+        return {
+          ...post,
+          likedByUser: post.likes.some(
+            (like) => like.userId === ctx?.session?.user.id,
+          ),
+        };
+      });
+    } catch (error) {
+      throw error;
+    }
+  }),
 
   create: protectedProcedure
     .input(
@@ -43,10 +65,10 @@ export const postRouter = createTRPCRouter({
         data,
       });
     }),
-    like: protectedProcedure
+  like: protectedProcedure
     .input(z.object({ postId: z.string() }))
     .mutation(async ({ ctx, input }) => {
-       if (!ctx.db.like) {
+      if (!ctx.db.like) {
         throw new Error("Database connection for 'like' is not defined");
       }
       return ctx.db.like.create({
@@ -56,7 +78,7 @@ export const postRouter = createTRPCRouter({
         },
       });
     }),
-    unlike: protectedProcedure
+  unlike: protectedProcedure
     .input(z.object({ postId: z.string() }))
     .mutation(async ({ ctx, input }) => {
       return ctx.db.like.deleteMany({

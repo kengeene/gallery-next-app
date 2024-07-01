@@ -6,8 +6,10 @@ import usePosts from "@/app/lib/hooks/usePosts";
 import Loading from "@/app/_components/atoms/loading";
 import type { ImageData } from "@/app/constants/types";
 
-export default function GalleryDisplay() {
-  const { posts, isLoading } = usePosts();
+export default function GalleryDisplay({authorId = null}: {authorId?: string | null}) {
+  const { posts, isLoading, myPosts } = usePosts();
+
+  const filteredPosts = authorId ? myPosts : posts;
 
   return (
     <div
@@ -18,7 +20,7 @@ export default function GalleryDisplay() {
       {isLoading ? (
         <Loading variant="secondary" />
       ) : (
-        posts?.map((image: ImageData) => (
+        filteredPosts?.map((image: ImageData) => (
           <ImageCard key={image.id} image={image} />
         ))
       )}
