@@ -7,7 +7,6 @@ import { ComponentTitle } from "@/app/_components/molecules/component-title";
 import { UploadDropzone } from "@/app/utils/uploadthing";
 import usePosts from "@/app/lib/hooks/usePosts";
 import useModal from "@/app/lib/hooks/useModal";
-import { useRouter } from "next/navigation";
 
 /**
  * AddPost component is a button that opens a modal for adding a post.
@@ -16,8 +15,6 @@ import { useRouter } from "next/navigation";
 const AddPost = () => {
   const { isModalOpen, closeModal, openModal } = useModal();
   const { create: createPost } = usePosts();
-
-  const router = useRouter();
 
   const [postData, setPostData] = useState({
     postTitle: '',
@@ -47,7 +44,6 @@ const AddPost = () => {
                 });
                 });
                 closeModal();
-                router.push("/");
               }}
               onUploadError={(error: Error) => {
                 // Do something with the error.
