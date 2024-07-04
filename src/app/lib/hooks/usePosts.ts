@@ -11,10 +11,10 @@ const usePosts = () => {
   const { data: myPosts, isLoading: isLoadingMyPosts } = api.post.get.useQuery(
     undefined,
     {
-      refetchOnWindowFocus: true,
-      refetchOnReconnect: true,
-    },
-  );
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+  },
+);
 
   const create = api.post.create.useMutation({
     onSuccess: async() => {
@@ -46,8 +46,7 @@ const usePosts = () => {
   return {
     posts: data ?? [],
     myPosts: myPosts ?? [],
-    isLoading,
-    isLoadingMyPosts,
+    loading: isLoading || isLoadingMyPosts,
     create,
     like,
     unlike,
