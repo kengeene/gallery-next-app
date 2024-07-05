@@ -7,22 +7,31 @@ import { ComponentTitle } from "@/app/_components/molecules/component-title";
 import { UploadDropzone } from "@/app/utils/uploadthing";
 import usePosts from "@/app/lib/hooks/usePosts";
 import useModal from "@/app/lib/hooks/useModal";
+import { useRouter } from "next/navigation";
+import type { UserSession } from "@/app/constants/types";
 
 /**
  * AddPost component is a button that opens a modal for adding a post.
  * @returns {JSX.Element} The rendered component with the button and modal.
  */
-const AddPost = () => {
+const AddPost = ({session}: {session: UserSession}) => {
   const { isModalOpen, closeModal, openModal } = useModal();
   const { create: createPost } = usePosts();
+  const router = useRouter();
 
   const [postData, setPostData] = useState({
-    postTitle: '',
-    postDescription: '',
+    postTitle: "",
+    postDescription: "",
   });
+
+  const handleClick =()=> {
+    session ? openModal() : router.push("/auth/signin");
+  }
+
+
   return (
     <div>
-      <CustomButton buttonType="secondary" onClick={openModal}>
+      <CustomButton buttonType="secondary" onClick={handleClick}>
         Add Picture
       </CustomButton>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Modal Title">
@@ -38,10 +47,10 @@ const AddPost = () => {
                 // Do something with the response
                 res.forEach((file) => {
                   createPost.mutate({
-                  imageUrl: file.url,
-                  title: postData.postTitle ,
-                  description: postData.postDescription,
-                });
+                    imageUrl: file.url,
+                    title: postData.postTitle,
+                    description: postData.postDescription,
+                  });
                 });
                 closeModal();
               }}
@@ -57,7 +66,9 @@ const AddPost = () => {
               helperText="Enter the picture title"
               placeholder="Fancy Amazing Picture"
               value={postData.postTitle}
-              onChange={(title) => setPostData({ ...postData, postTitle: title as string })}
+              onChange={(title) =>
+                setPostData({ ...postData, postTitle: title as string })
+              }
             />
           </div>
           <div>
@@ -66,7 +77,12 @@ const AddPost = () => {
               helperText="Describe your picture here"
               placeholder="Picture of an amazing view, Blue Sky, Polar Mountains..."
               value={postData.postDescription}
-              onChange={(description) => setPostData({ ...postData, postDescription: description as string })}
+              onChange={(description) =>
+                setPostData({
+                  ...postData,
+                  postDescription: description as string,
+                })
+              }
             />
           </div>
         </div>

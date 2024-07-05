@@ -12,7 +12,7 @@ export default async function Home() {
       <div className="my-4 flex justify-between">
         <ComponentTitle title="My Store" subTitle="My recent uploads" />
         <div>
-          <AddPost />
+          <AddPost session={session} />
         </div>
       </div>
       <ImageDisplay authorId={session?.user.id} />
